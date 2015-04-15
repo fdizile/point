@@ -1,7 +1,5 @@
 GIT
-  remote: git://github.com/codahale/bcrypt-ruby
-  specs:
-    bcrypt-ruby (3.1.6)
+  remote: git://github.com/codahale/bcrypt-ruby.git
 
 GEM
   remote: https://rubygems.org/
