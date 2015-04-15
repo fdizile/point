@@ -22,7 +22,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'bcrypt-ruby', :git => 'git://github.com/cpyle0819/bcrypt-ruby.git'
+gem 'bcrypt-ruby', :git => 'git://github.com/codahale/bcrypt-ruby.git'
 gem 'capybara', '2.1.0'
 group :doc do
   gem 'sdoc', require: false
