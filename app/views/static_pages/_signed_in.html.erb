@@ -1,0 +1,12 @@
+
+<% if !@schools.empty? %>
+<h2>Welcome, <%= gravatar_for @current_user, 80 %> <%= current_user.name %></h2>
+<div class="well">
+	<p><strong>You currently work at:</strong> <%= user_school(@current_user) %><p>
+	<p><strong>Your school has:</strong> <%= computer_count %> computers.</p>
+</div>
+<% else %>
+	<div class="well">
+		<p>There are no schools, contact the site administrator to report this error.</p>
+	</div>
+<% end %>

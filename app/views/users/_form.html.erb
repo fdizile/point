@@ -1,0 +1,36 @@
+<%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages', object: @user %>
+	
+	<% if admin? %>
+		<%= f.label :school_id, "School" %>
+		<%= f.select :school_id, School.all.collect { |s| [s.abbreviation, s.id] } %>
+		<fieldset class="radio-set">
+		<legend>Other School's Computers</legend>
+			<%= f.radio_button :setting_hide_others, true %>
+			<%= f.label :setting_hide_others, "Hide", value: true %>
+			<%= f.radio_button :setting_hide_others, false %>
+			<%= f.label :setting_hide_others, "Show", value: false %>
+		</fieldset>
+	<% end %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name, autofocus: 'true' %>
+
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<%= f.label :password_confirmation, "Confirmation" %>
+	<%= f.password_field :password_confirmation %>
+
+	<% if admin? %>
+        <%= f.label :admin, "Admin" %>
+        <%= f.select :admin, options_for_select(["true", "false"], f.object.admin) %>
+    <% end %>
+	
+	<div class="form-group">
+		<%= f.submit "Submit", class: "btn btn-primary" %>
+	</div>
+<% end %>

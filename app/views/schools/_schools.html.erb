@@ -1,0 +1,43 @@
+<table id="schools" class="table table-striped">
+ <% if current_page?('/') %>
+    <thead>
+      <tr>
+        <th>Short</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+  <% else %>
+   <thead>
+     <tr>
+       <th><%= sortable "abbreviation", "Short" %></th>
+       <th><%= sortable "code" %></th>
+       <th><%= sortable "name" %></th>
+       <th><%= sortable "phone" %></th>
+       <th><%= sortable "address" %></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </thead>
+  <% end %>
+
+  <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= school.abbreviation %></td>
+        <td><%= school.code %></td>
+        <td><%= school.name %></td>
+        <td><%= school.phone %></td>
+        <td><%= school.address %></td>
+        <td><%= link_to 'Edit', edit_school_path(school) %></td>
+        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

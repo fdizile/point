@@ -1,0 +1,58 @@
+<table id="computers" class="table table-striped">
+  <% if current_page?('/') %>
+    <thead>
+      <tr>
+        <th class="priority-4">School</th>
+        <th class="priority-1">ACPS</th>
+        <th class="priority-2">BPI</th>
+        <th class="priority-4">Make</th>
+        <th class="priority-3">Model</th>
+        <th class="priority-2">OS</th>
+        <th class="priority-2">Category</th>
+        <th class="priority-1">Room</th>
+        <th class="priority-2">Service Tag</th>
+        <th class="priority-1">Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+  <% else %>
+    <thead>
+      <tr>
+        <th class="priority-4"><%= sortable "school_id", "School" %></th>
+        <th class="priority-1"><%= sortable "acpsnumber", "ACPS" %></th>
+        <th class="priority-2"><%= sortable "bpinumber", "BPI" %></th>
+        <th class="priority-4"><%= sortable "make" %></th>
+        <th class="priority-3"><%= sortable "computer_model", "Model" %></th>
+        <th class="priority-2"><%= sortable "os" %></th>
+        <th class="priority-2"><%= sortable "category" %></th>
+        <th class="priority-1"><%= sortable "room", "Room" %></th>
+        <th class="priority-2"><%= sortable "servicetag", "Service Tag" %></th>
+        <th class="priority-1"><%= sortable "status", "Status" %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% end %>
+
+  <tbody>
+    <% @computers.each do |computer| %>
+      <tr>
+        <td class="priority-4"><%= computer_school(computer) %></td>
+        <td class="priority-1"><%= computer.acpsnumber %></td>
+        <td class="priority-2"><%= computer.bpinumber %></td>
+        <td class="priority-4"><%= computer.make %></td>
+        <td class="priority-3"><%= computer.computer_model %></td>
+        <td class="priority-2"><%= computer.os %></td>
+        <td class="priority-2"><%= computer.category %></td>
+        <td class="priority-1"><%= computer.room %></td>
+        <td class="priority-2"><%= computer.servicetag %></td>
+        <td class="priority-1"><%= computer.status %></td>
+        <td><%= link_to 'Edit', edit_computer_path(computer) %></td>
+        <td><%= link_to 'Destroy', computer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

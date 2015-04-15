@@ -1,0 +1,18 @@
+<%= form_for(@school) do |f| %>
+  <%= render "shared/error_messages", object: @school %>
+    <div class="form-group">
+    <%= f.label :abbreviation, "Short" %>
+    <%= f.text_field :abbreviation %>
+    <%= f.label :code, "Code" %>
+    <%= f.text_field :code %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+    <%= f.label :phone, "Phone" %>
+    <%= f.text_field :phone %>
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :address %>
+    </div>
+    <div class="form-group">
+    <%= f.submit "Save School", class: "btn btn-primary" %>
+    </div>
+<% end %>

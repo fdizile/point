@@ -1,0 +1,283 @@
+@import "bootstrap";
+/********
+GENERAL
+*********/
+* {
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+}
+html, body {
+	height: 100%;
+}
+.wrap {
+	position: relative;
+	overflow: hidden;
+	min-height: 100%;
+}
+body {
+	a {
+		color: #FF4329;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+/********
+ASIDE
+*********/
+aside {
+	float: left;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	min-width: 250px;
+	width: 20%;
+	background: #333;
+	.sidebar-header {
+		color: white;
+		border-bottom: 1px solid #555;
+
+		span {
+			padding-top: 5px;
+			margin-left: 70px;
+			float: right;
+		}
+
+		.brand {
+			display: block;
+			font-size: 20px;
+			font-weight: 200;
+			color: white;
+			text-shadow: 0 1px 0 grey;
+
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+		}
+	}
+	.menu-btn {
+		color: white;
+		text-align: right;
+		display: none;
+	}
+	section {
+		padding: 10px;
+		&.user {
+			color: white;
+		}
+
+	}
+	
+	ul {
+		margin: 20px 0 0 0;
+		li {
+			text-align: right;
+
+			a {
+				display: block;
+				height: 50px;
+				padding: 25px 15px 0 0;
+				font-size: 1.5em;
+				color: grey;
+				&:hover, &.current {
+					background: #FF4329;
+					text-decoration: none;
+					color: white;
+
+				}
+			}
+		}
+	}
+	.brand {
+		position: absolute;
+		top: 15px;
+		left: 15px;
+	}
+	#search-bar {
+		float: right;
+		padding: 0;
+		margin: 0 0 0 15px;
+
+		form {
+			margin: 0;
+		}
+	}
+	input {
+		width: 100px;
+	}
+	input[class="btn btn-primary"] {
+		margin-top: -10px;
+	}
+}
+
+/********
+DISPLAY
+********/
+.display {
+	float: right;
+	width: 78%;
+	padding: 15px 1% 0 1%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	th {
+		text-transform: uppercase;
+	}
+	.form-group {
+		margin-right: 15px;
+		display: inline-block;
+		&:last-of-type {
+			display: block;
+		}
+		&:nth-last-of-type(2) {
+		}
+
+	}
+	th, td {
+		text-align: left;
+	}
+
+	.signUpIn {
+		width: 104px;
+		margin: 0 auto;
+	}
+}
+
+/********
+FORMS
+*********/
+.display, aside #search-bar {
+	input, select, textarea, .btn {
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+		box-shadow: none;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+}
+form .radio-set {
+	input[type="radio"] {
+		float: left;
+	}
+}
+fieldset {
+	display: block;
+	width: 220px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	legend {
+		font-size: 1em;
+		margin: 0;
+		line-height: 1em;
+		width: auto;
+		border: none;
+	}
+}
+/*****************
+PHONE AND SMALL
+RESOLUTION DISPLAY
+******************/
+@media only screen
+and (max-device-width: 767px),
+	(max-width: 768px) {
+	nav {
+		display: none;
+	}
+	.control-panel {
+		ul {
+			li {
+				display: block;
+
+				a {
+					text-align: center;
+				}
+			}
+		}
+	}
+	aside .menu-btn {
+		display: block;
+		cursor: pointer;
+	}
+	.priority-2 {
+		display: none;
+	}
+}
+
+/***************
+TABLET AND MEDIUM
+RESOLUTION DISPLAY
+****************/
+@media only screen 
+and (max-device-width: 1024px),
+	(max-width: 1170px)
+and (min-device-width: 768px) {
+
+	.display {
+		width: 100%;
+	}
+
+	aside {
+		float: none;
+		width: 100%;
+		position: static;
+		ul {
+			margin: 0;
+			li {
+				display: inline-block;
+				margin: 0;
+				height: auto;
+				
+				a {
+					height: auto;
+					padding: 10px;
+				}
+
+			}
+		}
+	}
+	.priority-4, .priority-3 {
+		display: none;
+	}
+}
+
+
+/*****
+PRINT
+******/
+
+@media only print {
+   .display a:link:after,
+   .display a:visited:after {
+       content: "";
+   }
+	/********
+	ASIDE
+	*********/
+	aside {
+		display: none;
+		float: left;
+		min-width: 0;
+		width: 0;
+	}
+
+	/********
+	DISPLAY
+	********/
+	.display {
+		float: right;
+		width: 100%;
+		th, td {
+			text-align: left;
+		}
+		th:nth-of-type(n + 10), td:nth-of-type(n + 10) {
+			display: none;
+		}
+	}
+}

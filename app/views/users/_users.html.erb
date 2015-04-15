@@ -1,0 +1,43 @@
+<table id="users" class="table table-striped">
+<% if current_page?('/') %>
+  <thead>
+    <tr>
+      <th>School</th>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+<% else %>
+  <thead>
+    <tr>
+      <th><%= sortable "school" %></th>
+      <th><%= sortable "name", "Name" %></th>
+      <th><%= sortable "id", "ID" %></th>
+      <th><%= sortable "email", "Email" %></th>
+      <th><%= sortable "admin", "Admin?" %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<% end %>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= School.find_by(id: user.school_id).abbreviation %></td>
+        <td><%= user.name %></td>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

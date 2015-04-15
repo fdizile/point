@@ -1,0 +1,18 @@
+<% if signed_in? %>
+	
+	<%= render "signed_in" %>
+	
+	<% if admin? %>
+		<% #TODO Show user school %>
+		<h4>USERS | <%= link_to "Add", new_user_path %></span></h4>
+		<%= render "users/users" %>
+	
+		<h4>SCHOOLS<span> | <%= link_to "Add", new_school_path %></span></h4>
+		<%= render "schools/schools" %>
+
+	<% end %>
+	
+	
+<% else %>
+	<%= render "not_signed_in" %>
+<% end %>

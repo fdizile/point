@@ -1,0 +1,55 @@
+<%= form_for(@computer) do |f| %>
+  
+  <%= render "shared/error_messages", object: @computer %>
+    
+    <div class="form-group">
+        <% if admin? %>
+            <%= f.label :school_id, "School" %>
+            <%= f.select :school_id, School.all.collect {|s| [s.abbreviation, s.id ] } %>
+        <% end %>
+        <%= f.label :room, "Room #" %>
+        <%= f.text_field :room %>
+        <%= f.label :category %>
+        <%= f.select :category, options_for_select([ "Student", "Teacher", "Staff", "Lab", "Admin" ], f.object.category) %>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <%= f.label :acpsnumber, "ACPS Number" %>
+        <%= f.text_field :acpsnumber %>
+        <%= f.label :bpinumber, "BPI" %>
+        <%= f.text_field :bpinumber %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :servicetag, "Service Tag" %>
+        <%= f.text_field :servicetag %>
+        <%= f.label :make, "Make" %>
+        <%= f.select :make, options_for_select([["Apple", "Apple"], ["Dell", "Dell"]], f.object.make) %>
+        
+        <!-- Dynamic Form - Apple -->
+        <div id="Apple" class="model_form">
+            <%= f.label :computer_model, "Model" %>
+            <%= f.select :computer_model, 
+                            options_for_select([ "eMac", "iMac", "MacBook"], f.object.computer_model) %>
+            <%= f.label :os, "OS" %>
+            <%= f.select :os,
+                            options_for_select([ "10.5 Leopard", "10.6 Snow Leopard", "10.7 Lion", "10.8 Mountain Lion", "10.9 Mavericks"], f.object.os) %>
+        </div>
+        
+        <!-- Dynamic Form - Dell -->
+        <div id="Dell" class="model_form">
+            <%= f.label :computer_model, "Model" %>
+            <%= f.select :computer_model, 
+                            options_for_select([ "Optiplex GX520", "Optiplex GX620", "Optiplex 740", "Optiplex 745", "Optiplex 755", "Optiplex 760", "Optiplex 780", "Optiplex 790", "Optiplex 7010", "Latitude 6430"], f.object.computer_model) %>
+            <%= f.label :os, "OS" %>
+            <%= f.select :os, options_for_select([ "Windows XP", "Windows Server 2000", "Windows 7"], f.object.os) %>
+        </div>
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select([ "Active", "Inactive", "Repair", "Surplus" ], f.object.status) %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <%= f.submit "Save Computer", class: "btn btn-primary" %>
+    </div>
+
+<% end %>

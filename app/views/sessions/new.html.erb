@@ -1,0 +1,20 @@
+<% provide(:title, "Sign In") %>
+<h1>Sign in</h1>
+
+<div>
+  <div>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: 'true' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <div class="form-group">
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
+
+    <p>New user? Ask your zone-tech for access.</p>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<aside class="control-panel">
+    <section class="sidebar-header clearfix">
+        <a href="/" class="brand">point</a>
+        <section id="search-bar">
+        <%= form_tag computers_path, method: "get" do %>
+            <%= hidden_field_tag :direction, params[:direction] %>  
+            <%= hidden_field_tag :sort, params[:sort] %>
+            <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Go", name: nil, class: "btn btn-primary" %>
+        <% end %>
+        </section>
+        <span>
+            <% if signed_in? %>
+                <%= gravatar_for(current_user, 20) %>
+                <%= link_to "Settings", edit_user_path(current_user) %> | 
+                <%= link_to "Sign Out", signout_path, method: "delete" %>
+            <% else %>
+                <%= link_to "Sign In", signin_path %>
+            <% end %>
+        </span>
+    </section>
+    <section class="menu-btn" id="menu-btn">&#8801; Menu</section>
+    <nav class="clearfix menu">
+        <ul>
+    	    <li><%= link_to 'Add', new_computer_path, class: current(controller: 'computers', action: 'new')  %></li>
+    	    <li><%= link_to 'All', '/computers', class: current(controller: 'computers', action: 'index', category: '*') %></li>
+
+            <li><%= link_to 'Student', 
+                   computers_path(category: 'Student'), 
+                   class: current(category: 'Student') %>
+            </li>
+            <li><%= link_to 'Teacher', 
+                   computers_path(category: 'Teacher'), 
+                   class: current(category: 'Teacher') %>
+            </li>
+            <li><%= link_to 'Staff', 
+                   computers_path(category: 'Staff'), 
+                   class: current(category: 'Staff') %>
+            </li>
+            <li><%= link_to 'Lab', 
+                   computers_path(category: 'Lab'), 
+                   class: current(category: 'Lab') %>
+            </li>
+            <li><%= link_to 'Admin', 
+                   computers_path(category: 'Admin'), 
+                   class: current(category: 'Admin') %>
+            </li>
+
+        </ul>
+    </nav>
+</aside>
